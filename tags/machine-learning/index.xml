@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>machine learning on Yuhua&#39;s blog</title>
+    <link>https://liaoyuhua.github.io/tags/machine-learning/</link>
+    <description>Recent content in machine learning on Yuhua&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright © 2020–2020, LIAO Yuhua; all rights reserved.</copyright>
+    <lastBuildDate>Tue, 29 Sep 2020 12:58:10 +0800</lastBuildDate><atom:link href="https://liaoyuhua.github.io/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SVM</title>
+      <link>https://liaoyuhua.github.io/post/svm/</link>
+      <pubDate>Tue, 29 Sep 2020 12:58:10 +0800</pubDate>
+      
+      <guid>https://liaoyuhua.github.io/post/svm/</guid>
+      <description>学习目标 在特征空间中找到一个超平面，将实例分到不同的类。 超平面对应方程\(w\times x+b=0\)，其中\(w\)是法向量，\(b\)是</description>
+    </item>
+    
+    <item>
+      <title>距离</title>
+      <link>https://liaoyuhua.github.io/post/distance/</link>
+      <pubDate>Mon, 28 Sep 2020 20:03:10 +0800</pubDate>
+      
+      <guid>https://liaoyuhua.github.io/post/distance/</guid>
+      <description>机器学习里面，常常用距离来表示输入数据（input data）的某种模式（pattern），比如相似度。K临近算法、k-means聚类算法等技</description>
+    </item>
+    
+  </channel>
+</rss>

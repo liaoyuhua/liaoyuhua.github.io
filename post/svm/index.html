@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A master of Statistics at University of Edinburgh">
+    <meta name="keywords" content="hugo blog">
+    <link rel="stylesheet" href=https://liaoyuhua.github.io/css/syntax.css>
+    <link rel="stylesheet" href=https://liaoyuhua.github.io/css/style.css>
+    <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
+    <title>Yuhua&#39;s blog</title>
+  </head><body><aside id="sidenav">
+    <header>
+    
+        <a href=https://liaoyuhua.github.io><img src="https://liaoyuhua.github.io/avatar.png" alt="avatar"></a>
+        
+    
+
+    <a id="branding" href=https://liaoyuhua.github.io>
+        
+            Yuhua&#39;s blog
+        
+    </a>
+    </header>
+
+    <nav>
+        
+            		
+            <a href="https://liaoyuhua.github.io/"
+                
+            >
+                <i class='fa fa-home fa-fw'></i>
+                <span>Home</span>
+            </a>
+        
+            		
+            <a href="https://liaoyuhua.github.io/post/"
+                
+            >
+                <i class='fa fa-list fa-fw'></i>
+                <span>Posts</span>
+            </a>
+        
+            		
+            <a href="https://liaoyuhua.github.io/tags/"
+                
+            >
+                <i class='fa fa-tags fa-fw'></i>
+                <span>Tags</span>
+            </a>
+        
+            		
+            <a href="https://github.com/liaoyuhua"
+                
+                    target="_blank"
+                
+            >
+                <i class="fab fa-github fa-ms"></i>
+                <span>github</span>
+            </a>
+        
+            		
+            <a href="mailto:liaoyuhua95@gmail.com"
+                
+            >
+                <i class="far fa-envelope"></i>
+                <span>Email</span>
+            </a>
+        
+    </nav>
+</aside>
+<main id="main">
+            <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
+            <div class="content">
+    
+    <h1 id="title">SVM</h1>
+    
+      
+    
+    <h4 id="学习目标">学习目标</h4>
+
+<p>在特征空间中找到一个超平面，将实例分到不同的类。</p>
+
+<p>超平面对应方程<span  class="math">\(w\times x+b=0\)</span>，其中<span  class="math">\(w\)</span>是法向量，<span  class="math">\(b\)</span>是截距。法向量指向的是正类。</p>
+
+<p>为什么法向量指向的是正类：</p>
+
+<p>举个二维的例子。方程<span  class="math">\(ax+b=y\)</span>，我们都知道系数也就是导数<span  class="math">\(a\)</span>所指向的是函数值上升的方向，此时<span  class="math">\(a\)</span>也相当于法向量。对于<span  class="math">\(w\times x+b=y\)</span>，函数值上升，也就是大于0，是正类的区间。</p>
+
+<h4 id="法向量">法向量</h4>
+
+<p>垂直于平面的直线所表示的向量为该平面的法向量。</p>
+
+<h4 id="函数间隔">函数间隔</h4>
+
+<p>既然支持向量机是为了找到一个保证间隔最大化的超平面，那么首先需要找到衡量间隔的量。也就是函数间隔。</p>
+
+<blockquote>
+<p>对于给定的训练数据集T和超平面<span  class="math">\((w,b)\)</span>，超平面关于样本点<span  class="math">\((x_i,y_i)\)</span>的函数间隔为：</p>
+
+<p><span  class="math">\[\hat\Upsilon_i=y_i(w\times x_i+b)\]</span></p>
+</blockquote>
+
+<p>这个概念测量度可以从两个方面解释：</p>
+
+<ol>
+<li><span  class="math">\(w\times x_i +b\)</span>衡量了点<span  class="math">\((x_i,y_i)\)</span>到超平面的距离</li>
+<li><span  class="math">\(y_i\)</span>如果和<span  class="math">\(w\times x_i +b\)</span>同号，那么<span  class="math">\(y_i(w\times x_i+b)\)</span>为正，也就是说分类正确</li>
+</ol>
+
+<p>因此，函数间隔越大（+），那么说明分对了，而且可信度也很高；越小（-），说明分错了，且可信度也很高。所以，我们希望让超平面的函数间隔越大越好。</p>
+
+<blockquote>
+<p>对于给定的训练数据集T和超平面<span  class="math">\((w,b)\)</span>，超平面关于训练数据集<span  class="math">\(T\)</span>的函数间隔为超平面关于<span  class="math">\(T\)</span>中所有样本点的函数间隔的最小值：<span  class="math">\(\hat\Upsilon=\underset{i=1,...,N}{\hat\Upsilon_i}\)</span></p>
+</blockquote>
+
+<h4 id="范数">范数</h4>
+
+    
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a href="https://liaoyuhua.github.io/post/distance/"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">top</i></a>
+        <div class="nav-next">
+            
+                <a class="grayed-out" href="javascript:void()"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
+    </div>
+    
+
+            </div><footer>
+<div class="footer-content">
+
+
+<p class="copyright meta">Copyright © 2020–2020, LIAO Yuhua; all rights reserved.</p>
+
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script></main>
+    </body>
+    <script src=https://liaoyuhua.github.io/js/navbutton.js></script>
+</html>
