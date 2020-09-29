@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A master of Statistics at University of Edinburgh">
+    <meta name="keywords" content="hugo blog">
+    <link rel="stylesheet" href=https://liaoyuhua.github.io/css/syntax.css>
+    <link rel="stylesheet" href=https://liaoyuhua.github.io/css/style.css>
+    <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
+    <title>Yuhua&#39;s blog</title>
+  </head><body><aside id="sidenav">
+    <header>
+    
+        <a href=https://liaoyuhua.github.io/><img src="https://liaoyuhua.github.io/avatar.png" alt="avatar"></a>
+        
+    
+
+    <a id="branding" href=https://liaoyuhua.github.io/>
+        
+            Yuhua&#39;s blog
+        
+    </a>
+    </header>
+
+    <nav>
+        
+            		
+            <a href="https://liaoyuhua.github.io/"
+                
+            >
+                <i class='fa fa-home fa-fw'></i>
+                <span>Home</span>
+            </a>
+        
+            		
+            <a href="https://liaoyuhua.github.io/post/"
+                
+            >
+                <i class='fa fa-list fa-fw'></i>
+                <span>Posts</span>
+            </a>
+        
+            		
+            <a href="https://liaoyuhua.github.io/tags/"
+                
+            >
+                <i class='fa fa-tags fa-fw'></i>
+                <span>Tags</span>
+            </a>
+        
+            		
+            <a href="https://github.com/liaoyuhua"
+                
+                    target="_blank"
+                
+            >
+                <i class="fab fa-github fa-ms"></i>
+                <span>github</span>
+            </a>
+        
+            		
+            <a href="mailto:liaoyuhua95@gmail.com"
+                
+            >
+                <i class="far fa-envelope"></i>
+                <span>Email</span>
+            </a>
+        
+    </nav>
+</aside>
+<main id="main">
+            <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
+            <div class="content">
+    
+    <div class="spacer"></div>
+    
+      
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#面试概率题">面试：概率题</a></li>
+  </ul>
+</nav>
+    <h2 id="面试概率题">面试：概率题</h2>
+<ol>
+<li>
+<p>从一副52张扑克牌中随机抽两种，颜色相等的概率</p>
+<p>分母：$$52\times51 $$；分子：$$26\times 25$$；概率：$$\frac{25}{102}$$</p>
+</li>
+<li>
+<p>去掉大小王的52张牌，分成$$26\times2$$两堆，从其中一堆取4张牌为4个A的概率</p>
+</li>
+</ol>
+<p>$$
+C_{1}^{2}\times \frac{C_{48}^{22}}{C_{52}^{26}}\times \frac{C_{4}^{4}}{C_{26}^{4}}=\frac{2}{270725}
+$$
+3. 一枚硬币，扔了一亿次都是正面朝上，再扔一次反面朝上的概率是多少？</p>
+<p>$$\frac{1}{2}$$</p>
+<ol start="4">
+<li>
+<p>已知N枚真硬币，M枚假硬币（两面都是国徽），,在袋中任取1枚，将它抛掷R次，已知每次得到国徽，问这枚硬币为真的概率是多少？</p>
+<p>贝叶斯公式：
+$$
+P(真硬币)=\frac{N}{M+N}, P(假硬币)=\frac{M}{M+N} \<br>
+P(R次均为国徽|真硬币)=(\frac{1}{2})^R\<br>
+P(R次均为国徽|假硬币)=1^R\<br>
+P(真硬币|R次均为国徽)=\frac{P(真硬币)P(R次均为国徽|真硬币)}{P(真硬币)P(R次均为国徽|真硬币)+P(假硬币)P(R次均为国徽|假硬币)}\<br>
+=\frac{N\times(\frac{1}{2})^R}{N\times(\frac{1}{2})^R+M }
+$$</p>
+</li>
+<li>
+<p>有8个箱子，现在有一封信，这封信放在这8个箱子中（任意一个）的概率为4/5，不放的概率为1/5（比如忘记了），现在我打开1号箱子发现是空的，求下面7个箱子中含有这封信的概率为？</p>
+<p>把不放看成一个箱子，所以有9个箱子，1-8号的概率是$$\frac{4}{5}\times\frac{1}{8}=\frac{1}{10}$$，9号的概率是$$\frac{1}{5}$$。已知1号没有信，求信不在9号的概率：$$7/9$$。</p>
+</li>
+<li>
+<p>一对夫妻有2个孩子，求一个孩子是女孩的情况下，另一个孩子也是女孩的概率</p>
+<p>不要考虑出生，只用考虑这对夫妻已经有两个孩子。题干等价于一对夫妻有2个孩子，在已知这两个孩子有一个是女孩的情况下，求两者均为女孩的概率。
+$$
+样本空间：(女,男)(男,女)(女,女)\<br>
+满足条件的样本点：(女,女)\<br>
+概率：\frac{1}{3}
+$$</p>
+</li>
+<li>
+<p>有种癌症，早期的治愈率为0.8，中期的治愈率为0.5，晚期的治愈率为0.2。若早期没治好就会转为中期，中期没治好就会变成晚期。现在有一个人被诊断为癌症早期，然后被治愈了，问他被误诊为癌症的概率是多少？</p>
+</li>
+<li>
+<p>某城市发生了一起汽车撞人逃跑事件，该城市只有两种颜色的车，蓝20%绿80%，事发时现场有一个目击者，他指证是蓝车，但是根据专家在现场分析，当时那种条件能看正确的可能性是80%，那么，肇事的车是蓝车的概率是多少？</p>
+</li>
+<li>
+<p>100人坐飞机，第一个乘客在座位中随便选一个坐下，第100人正确坐到自己坐位的概率是？</p>
+</li>
+</ol>
+
+    
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a class="grayed-out" href="javascript:void()"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">top</i></a>
+        <div class="nav-next">
+            
+                <a href="https://liaoyuhua.github.io/post/distance/"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
+    </div>
+    
+
+            </div><footer>
+<div class="footer-content">
+
+
+<p class="copyright meta">Copyright © 2020–2020, LIAO Yuhua; all rights reserved.</p>
+
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script></main>
+    </body>
+    <script src=https://liaoyuhua.github.io/js/navbutton.js></script>
+</html>

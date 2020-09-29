@@ -26,5 +26,14 @@
       <description>机器学习里面，常常用距离来表示输入数据（input data）的某种模式（pattern），比如相似度。K临近算法、k-means聚类算法等技</description>
     </item>
     
+    <item>
+      <title></title>
+      <link>https://liaoyuhua.github.io/post/%E9%9D%A2%E8%AF%95%E6%A6%82%E7%8E%87%E9%A2%98/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://liaoyuhua.github.io/post/%E9%9D%A2%E8%AF%95%E6%A6%82%E7%8E%87%E9%A2%98/</guid>
+      <description>面试：概率题 从一副52张扑克牌中随机抽两种，颜色相等的概率 分母：$$52\times51 $$；分子：$$26\times 25$$；概率：$$</description>
+    </item>
+    
   </channel>
 </rss>
