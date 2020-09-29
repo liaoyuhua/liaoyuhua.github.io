@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>statistics on Yuhua&#39;s blog</title>
+    <link>https://liaoyuhua.github.io/tags/statistics/</link>
+    <description>Recent content in statistics on Yuhua&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright © 2020–2020, LIAO Yuhua; all rights reserved.</copyright>
+    <lastBuildDate>Tue, 29 Sep 2020 20:26:10 +0800</lastBuildDate><atom:link href="https://liaoyuhua.github.io/tags/statistics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>面试：概率题</title>
+      <link>https://liaoyuhua.github.io/post/%E9%9D%A2%E8%AF%95%E6%A6%82%E7%8E%87%E9%A2%98/</link>
+      <pubDate>Tue, 29 Sep 2020 20:26:10 +0800</pubDate>
+      
+      <guid>https://liaoyuhua.github.io/post/%E9%9D%A2%E8%AF%95%E6%A6%82%E7%8E%87%E9%A2%98/</guid>
+      <description>从一副52张扑克牌中随机抽两种，颜色相等的概率 分母：\(52\times51 \)；分子：\(26\times 25\)；概率：\(\frac{</description>
+    </item>
+    
+  </channel>
+</rss>
