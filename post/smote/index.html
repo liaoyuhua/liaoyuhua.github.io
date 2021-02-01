@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A master of Statistics at University of Edinburgh">
+    <meta name="keywords" content="hugo blog">
+    <link rel="stylesheet" href=https://liaoyuhua.github.io/css/syntax.css>
+    <link rel="stylesheet" href=https://liaoyuhua.github.io/css/style.css>
+    <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
+    <title>Yuhua&#39;s blog</title>
+  </head><body><aside id="sidenav">
+    <header>
+    
+        <a href=https://liaoyuhua.github.io/><img src="https://liaoyuhua.github.io/avatar.png" alt="avatar"></a>
+        
+    
+
+    <a id="branding" href=https://liaoyuhua.github.io/>
+        
+            Yuhua&#39;s blog
+        
+    </a>
+    </header>
+
+    <nav>
+        
+            		
+            <a href="https://liaoyuhua.github.io/"
+                
+            >
+                <i class='fa fa-home fa-fw'></i>
+                <span>Home</span>
+            </a>
+        
+            		
+            <a href="https://liaoyuhua.github.io/post/"
+                
+            >
+                <i class='fa fa-list fa-fw'></i>
+                <span>Posts</span>
+            </a>
+        
+            		
+            <a href="https://liaoyuhua.github.io/tags/"
+                
+            >
+                <i class='fa fa-tags fa-fw'></i>
+                <span>Tags</span>
+            </a>
+        
+            		
+            <a href="https://github.com/liaoyuhua"
+                
+                    target="_blank"
+                
+            >
+                <i class="fab fa-github fa-ms"></i>
+                <span>github</span>
+            </a>
+        
+            		
+            <a href="mailto:liaoyuhua95@gmail.com"
+                
+            >
+                <i class="far fa-envelope"></i>
+                <span>Email</span>
+            </a>
+        
+    </nav>
+</aside>
+<main id="main">
+            <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
+            <div class="content">
+    
+    <h1 id="title">SMOTE: Synthetic Minority Over-sampling Technique</h1>
+    
+      
+    
+    <h4 id="这个方法用来干嘛">这个方法用来干嘛</h4>
+
+<p>在处理很多分类问题的时候，我们会面临着类别不均衡的问题，比如信贷违约概率预测问题，在这个问题里，违约的用户往往都占极小部分；又比如说某遗传病患病因素研究问题，同样研究人员会面临患病人群占比过小的情况。在这些情况下，即使是最朴素的分类器，比如面对一个新样本，直接预测其为占大比重的类别（class of majority），我们都能得到极为优秀的准确率。显然这样是不行的，因为这种极其不均衡的训练集会使得我们的学习器对于小比重类别（class of minority）不敏感。那么，业界已经有一系列成熟的方法来处理此类问题，主要可以分为过采样（over-sampling）和欠采样（under-sampling）。这篇blog的主角SMOTE就是一种过采样方法。</p>
+
+<h4 id="从basic-method出发oversampling-with-replacement">从basic method出发：over-sampling with replacement</h4>
+
+<p>既然是过采样，最朴素的想法就是在class of minority里面多抽样几次，这样直接就把size of class给搞上去了。那么为什么不用这种简单的方法呢？</p>
+
+<p>因为简单地重复小比重类别样本，会有可能造成过拟合情况，导致模型泛化能力不足。举例来说明这个情况，如果分类器是朴素贝叶斯分类器，那么重复生成相同的样本，会导致学习器偏向于某一部分样本点。</p>
+
+<h4 id="扬长避短smote">扬长避短：SMOTE</h4>
+
+<p><strong>扬长</strong></p>
+
+<p>over-sampling with replacement的思想是值得借鉴的，根据原有的样本，生成新的样本点，来扩充小比重类别的样本容量。</p>
+
+<p><strong>避短</strong></p>
+
+<p>给新生成的样本点增加bias和随机性，减小过拟合的可能，使模型泛化性更强。</p>
+
+<p><strong>算法</strong></p>
+
+<p><img src="https://miro.medium.com/freeze/max/960/1*Ye7pOi-qIGAwpmyUKpOlAw.gif" alt="SMOTE implementation in PySpark. Being probably the most common method… |  by Potassium Potato | Medium" style="zoom: 67%;" /></p>
+
+<p><strong>参数</strong></p>
+
+<ol>
+<li><span  class="math">\(N\)</span></li>
+</ol>
+
+<p>从少数样本中采样的比例，平均每个样本增加<span  class="math">\(N/100\)</span>个新样本。</p>
+
+<ol start="2">
+<li><span  class="math">\(k\)</span></li>
+</ol>
+
+<p>用于产生新的少数派样本的最近邻数量。</p>
+
+<h4 id="更进一步smotenc">更进一步：SMOTE-NC</h4>
+
+<p>SMOTE对于含有分类变量的特征空间处理起来存在问题：怎么去找nearest neighbors--&gt;怎么去度量距离。因此，SMOTE-NC就是用来处理这类混合类型的特征空间。全名：Synthetic Minority Over-sampling TEchnique-Nominal Continuous。</p>
+
+<p>大体思路和SMOTE相同，1.找minority class的样本点的nearest neighbors 2.生成随机minority class样本，以达到over-sampling的效果。</p>
+
+<p>不同的是找nearest neighbors，计算欧式距离的时候，对于分类变量所在的维度的特殊处理方法。具体地说，就是先计算所有minority-class的连续型变量的标准差的中位数，记为<span  class="math">\(Med\)</span>，如果算距离的时候，如果minority-class的nomial feature和majority-class的不一样，那么就将<span  class="math">\(Med\)</span>带入计算，如果一样就计作0。</p>
+
+<p>算法原文：</p>
+
+<ol>
+<li>Median computation: Compute the median of standard deviations of all continuous features for the minority class. If the nominal features differ between a sample and its potential nearest neighbors, then this median is included in the Euclidean distance computation. We use median to penalize the difference of nominal features by an amount that is related to the typical difference in continuous feature values.</li>
+<li>Nearest neighbor computation: Compute the Euclidean distance between the feature vector for which k-nearest neighbors are being identified (minority class sample) and the other feature vectors (minority class samples) using the continuous feature space. For every differing nominal feature between the considered feature vector and its potential nearest-neighbor, include the median of the standard deviations previously computed, in the Euclidean distance computation.</li>
+</ol>
+
+    
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a href="https://liaoyuhua.github.io/post/%E9%9D%A2%E8%AF%95%E6%A6%82%E7%8E%87%E9%A2%98/"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">top</i></a>
+        <div class="nav-next">
+            
+                <a class="grayed-out" href="javascript:void()"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
+    </div>
+    
+
+            </div><footer>
+<div class="footer-content">
+
+
+<p class="copyright meta">Copyright © 2020–2020, LIAO Yuhua; all rights reserved.</p>
+
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script></main>
+    </body>
+    <script src=https://liaoyuhua.github.io/js/navbutton.js></script>
+</html>
