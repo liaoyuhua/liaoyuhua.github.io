@@ -72,54 +72,32 @@
             <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
             <div class="content">
     
-    <h1 id="title">距离</h1>
+    <div class="spacer"></div>
     
       
-    
-    <p>机器学习里面，常常用距离来表示输入数据（input data）的某种模式（pattern），比如相似度。K临近算法、k-means聚类算法等技术都基于距离计算方式的选择。所以这篇blog介绍不同的距离度量方式以及相互关系。
-首先，设特征空间<span  class="math">\(\chi\)</span>是n维实数向量空间<span  class="math">\(R^n\)</span>，<span  class="math">\(x_i,x_j\in \chi\)</span>，<span  class="math">\(x_i=(x_i^{(1)},x_i^{(2)},...,x_i^{(n)})^T\)</span>，<span  class="math">\(x_j=(x_j^{(1)},x_j^{(2)},...,x_j^{(n)})^T\)</span>。</p>
-
-<h2 id="闵可夫斯基距离minkowski-distance">闵可夫斯基距离（Minkowski distance）</h2>
-
-<p>定义：</p>
-
-<p><span  class="math">\[D(x_i,x_j)=(\sum_{l=1}^{n}|x_i^{l}-x_j^{l}|^p)^{\frac{1}{p}}\]</span></p>
-
-<h2 id="欧氏距离euclidean-distance">欧氏距离（Euclidean distance）</h2>
-
-<p>当<span  class="math">\(p=2\)</span>时，称为欧氏距离。</p>
-
-<p><span  class="math">\[D(x_i,x_j)=(\sum_{l=1}^{n}|x_i^{l}-x_j^{l}|^2)^{\frac{1}{2}}\]</span></p>
-
-<h2 id="曼哈顿距离manhattan-distance">曼哈顿距离（Manhattan distance）</h2>
-
-<p>当<span  class="math">\(p=1\)</span>时，称为曼哈顿距离。</p>
-
-<p><span  class="math">\[D(x_i,x_j)=\sum_{l=1}^{n}|x_i^{l}-x_j^{l}|\]</span></p>
-
-<h2 id="切比雪夫距离">切比雪夫距离</h2>
-
-<p>当<span  class="math">\(p=\infin\)</span>时，称为切比雪夫距离</p>
-
-<p><span  class="math">\[D(x_i,x_j)=\underset{l}max(|x_i^{l}-x_j|^{l})\]</span></p>
-
-<h2 id="马哈拉诺比斯距离mahalanobis-distance">马哈拉诺比斯距离（Mahalanobis Distance）</h2>
-
-<h2 id="余弦相似度cosine-similarity">余弦相似度（Cosine similarity）</h2>
-
-<h2 id="jaccard-distance">（Jaccard distance）</h2>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#numpy">Numpy</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    <h2 id="numpy">Numpy</h2>
+<h4 id="heading"></h4>
 
     
     <div class="nav-next-prev">
         <div class="nav-prev">
             
-                <a href="https://liaoyuhua.github.io/post/factor-analysis/"><i class="fas fa-chevron-left"></i></a>
+                <a class="grayed-out" href="javascript:void()"><i class="fas fa-chevron-left"></i></a>
             
         </div>
         <a class="nav-top" href="#">top</i></a>
         <div class="nav-next">
             
-                <a href="https://liaoyuhua.github.io/post/svm/"><i class="fas fa-chevron-right"></i></a>
+                <a href="https://liaoyuhua.github.io/post/mysql%E6%97%A5%E6%9C%9F%E5%87%BD%E6%95%B0/"><i class="fas fa-chevron-right"></i></a>
             
         </div>
     </div>
