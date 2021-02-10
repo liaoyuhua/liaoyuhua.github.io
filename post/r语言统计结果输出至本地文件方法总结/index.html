@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A master of Statistics at University of Edinburgh">
+    <meta name="keywords" content="hugo blog">
+    <link rel="stylesheet" href=https://liaoyuhua.github.io/css/syntax.css>
+    <link rel="stylesheet" href=https://liaoyuhua.github.io/css/style.css>
+    <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
+    <title>Yuhua&#39;s blog</title>
+  </head><body><aside id="sidenav">
+    <header>
+    
+        <a href=https://liaoyuhua.github.io/><img src="https://liaoyuhua.github.io/avatar.png" alt="avatar"></a>
+        
+    
+
+    <a id="branding" href=https://liaoyuhua.github.io/>
+        
+            Yuhua&#39;s blog
+        
+    </a>
+    </header>
+
+    <nav>
+        
+            		
+            <a href="https://liaoyuhua.github.io/"
+                
+            >
+                <i class='fa fa-home fa-fw'></i>
+                <span>Home</span>
+            </a>
+        
+            		
+            <a href="https://liaoyuhua.github.io/post/"
+                
+            >
+                <i class='fa fa-list fa-fw'></i>
+                <span>Posts</span>
+            </a>
+        
+            		
+            <a href="https://liaoyuhua.github.io/tags/"
+                
+            >
+                <i class='fa fa-tags fa-fw'></i>
+                <span>Tags</span>
+            </a>
+        
+            		
+            <a href="https://github.com/liaoyuhua"
+                
+                    target="_blank"
+                
+            >
+                <i class="fab fa-github fa-ms"></i>
+                <span>github</span>
+            </a>
+        
+            		
+            <a href="mailto:liaoyuhua95@gmail.com"
+                
+            >
+                <i class="far fa-envelope"></i>
+                <span>Email</span>
+            </a>
+        
+    </nav>
+</aside>
+<main id="main">
+            <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
+            <div class="content">
+    
+    <h1 id="title">R语言：统计结果输出至本地文件方法总结</h1>
+    
+      
+    
+    <h2 id="motivation">Motivation</h2>
+
+<p>有时候需要将Rstudio的工作台的非图片内容输出到文本编辑器中，比如回归模型跑完之后，回归结果需要以一种精美的形式快速输出到论文中去，如果直接复制粘贴控制台的内容，既难看，又低效。那么本文的目的就是解决这个问题。</p>
+
+<h2 id="输出内容准备">输出内容准备</h2>
+
+<p>为了展示结果，使用的是R内置的数据集，mtcars。然后基于这个数据集建立回归模型。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">attach</span>(mtcars)
+Y <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">cbind</span>(mpg)
+X2 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">cbind</span>(wt,hp,drat)
+<span style="color:#75715e">#简单的OLS回归，获得估计结果fit</span>
+fit <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">lm</span>(Y<span style="color:#f92672">~</span>wt<span style="color:#f92672">+</span>hp<span style="color:#f92672">+</span>drat)</code></pre></div>
+<h2 id="1sink">1.sink()</h2>
+
+<p>在代码开始前加一行：sink(&quot;output.txt&quot;)，就会自动把结果全部输出到工作文件夹下的output.txt文本文档。这时在R控制台的输出窗口中是看不到输出结果的。代码结束时用sink()切换回来。
+<strong>示例：</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">sink</span>(<span style="color:#e6db74">&#34;fit_sink.txt&#34;</span>)  
+fit       
+<span style="color:#a6e22e">sink</span>() </code></pre></div>
+<p>输出结果如下：</p>
+
+<p><img src="C:\Users\1ia0\AppData\Roaming\Typora\typora-user-images\image-20210210180714011.png" alt="image-20210210180714011" style="zoom:50%;" /></p>
+
+<p>我觉得这个方法更适合导出数据信息。</p>
+
+<h2 id="2stargazer">2.stargazer()</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(stargazer)
+<span style="color:#75715e">#生成估计结果表格</span>
+<span style="color:#a6e22e">stargazer</span>(fit, title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;fitting&#34;</span>, align <span style="color:#f92672">=</span> F, type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;text&#34;</span>, no.space <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>, out <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;fit_stargazer.html&#34;</span>)
+<span style="color:#75715e">#需要注意的是，此命令中，在consol中生成的表格是text格式的，而导出的表格是html格式的（stargazer不能直接生成word文件）。</span></code></pre></div>
+<p>输出结果如下：</p>
+
+<p><img src="C:\Users\1ia0\AppData\Roaming\Typora\typora-user-images\image-20210210180956688.png" alt="image-20210210180956688" style="zoom:50%;" /></p>
+
+<h2 id="3r2wd包">3.R2wd包</h2>
+
+<p>这个包是一整套从R到word的工作工具，有时间单独写。</p>
+
+    
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a href="https://liaoyuhua.github.io/post/smote/"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">top</i></a>
+        <div class="nav-next">
+            
+                <a class="grayed-out" href="javascript:void()"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
+    </div>
+    
+
+            </div><footer>
+<div class="footer-content">
+
+
+<p class="copyright meta">Copyright © 2020–2020, LIAO Yuhua; all rights reserved.</p>
+
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script></main>
+    </body>
+    <script src=https://liaoyuhua.github.io/js/navbutton.js></script>
+</html>
