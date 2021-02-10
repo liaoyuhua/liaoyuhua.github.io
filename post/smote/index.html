@@ -76,17 +76,17 @@
     
       
     
-    <h4 id="这个方法用来干嘛">这个方法用来干嘛</h4>
+    <h2 id="这个方法用来干嘛">这个方法用来干嘛</h2>
 
 <p>在处理很多分类问题的时候，我们会面临着类别不均衡的问题，比如信贷违约概率预测问题，在这个问题里，违约的用户往往都占极小部分；又比如说某遗传病患病因素研究问题，同样研究人员会面临患病人群占比过小的情况。在这些情况下，即使是最朴素的分类器，比如面对一个新样本，直接预测其为占大比重的类别（class of majority），我们都能得到极为优秀的准确率。显然这样是不行的，因为这种极其不均衡的训练集会使得我们的学习器对于小比重类别（class of minority）不敏感。那么，业界已经有一系列成熟的方法来处理此类问题，主要可以分为过采样（over-sampling）和欠采样（under-sampling）。这篇blog的主角SMOTE就是一种过采样方法。</p>
 
-<h4 id="从basic-method出发oversampling-with-replacement">从basic method出发：over-sampling with replacement</h4>
+<h2 id="从basic-method出发oversampling-with-replacement">从basic method出发：over-sampling with replacement</h2>
 
 <p>既然是过采样，最朴素的想法就是在class of minority里面多抽样几次，这样直接就把size of class给搞上去了。那么为什么不用这种简单的方法呢？</p>
 
 <p>因为简单地重复小比重类别样本，会有可能造成过拟合情况，导致模型泛化能力不足。举例来说明这个情况，如果分类器是朴素贝叶斯分类器，那么重复生成相同的样本，会导致学习器偏向于某一部分样本点。</p>
 
-<h4 id="扬长避短smote">扬长避短：SMOTE</h4>
+<h2 id="扬长避短smote">扬长避短：SMOTE</h2>
 
 <p><strong>扬长</strong></p>
 
@@ -114,7 +114,7 @@
 
 <p>用于产生新的少数派样本的最近邻数量。</p>
 
-<h4 id="更进一步smotenc">更进一步：SMOTE-NC</h4>
+<h2 id="更进一步smotenc">更进一步：SMOTE-NC</h2>
 
 <p>SMOTE对于含有分类变量的特征空间处理起来存在问题：怎么去找nearest neighbors--&gt;怎么去度量距离。因此，SMOTE-NC就是用来处理这类混合类型的特征空间。全名：Synthetic Minority Over-sampling TEchnique-Nominal Continuous。</p>
 
