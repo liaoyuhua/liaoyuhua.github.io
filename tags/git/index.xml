@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on Yuhua&#39;s blog</title>
+    <link>https://liaoyuhua.github.io/tags/git/</link>
+    <description>Recent content in Git on Yuhua&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright © 2020–2020, LIAO Yuhua; all rights reserved.</copyright>
+    <lastBuildDate>Sat, 13 Feb 2021 22:49:43 +0800</lastBuildDate><atom:link href="https://liaoyuhua.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>通过Pycharm和Github进行项目版本管理</title>
+      <link>https://liaoyuhua.github.io/post/%E9%80%9A%E8%BF%87pycharm%E5%92%8Cgithub%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</link>
+      <pubDate>Sat, 13 Feb 2021 22:49:43 +0800</pubDate>
+      
+      <guid>https://liaoyuhua.github.io/post/%E9%80%9A%E8%BF%87pycharm%E5%92%8Cgithub%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</guid>
+      <description>准备工作 Github账号、Pycharm、Git 在Pycharm中配置Github和Git 在导航栏中，点击“File”，点击“Setting</description>
+    </item>
+    
+  </channel>
+</rss>
