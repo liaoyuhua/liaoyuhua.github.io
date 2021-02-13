@@ -75,54 +75,82 @@
     <h1 id="title">通过Pycharm和Github进行项目版本管理</h1>
     
       
-    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#准备工作">准备工作</a></li>
-    <li><a href="#在pycharm中配置github和git">在Pycharm中配置Github和Git</a></li>
-    <li><a href="#新建本地项目">新建本地项目</a></li>
-    <li><a href="#在项目地址生成git仓库">在项目地址生成Git仓库</a></li>
-    <li><a href="#将本地项目分享到github">将本地项目分享到Github</a></li>
-    <li><a href="#将后续修改提交到github仓库中">将后续修改提交到Github仓库中</a></li>
-  </ul>
-</nav>
+    
     <h2 id="准备工作">准备工作</h2>
+
 <p>Github账号、Pycharm、Git</p>
+
 <h2 id="在pycharm中配置github和git">在Pycharm中配置Github和Git</h2>
+
 <p>在导航栏中，点击“File”，点击“Setting”：</p>
-<p><!-- raw HTML omitted --></p>
+
+<p><img src="https://liaoyuhua.github.io/image-20210213231241877.png" alt="image-20210213231241877" style="zoom:50%;" /></p>
+
 <p>点击左侧选项栏“Version Control”，点击子选项“Git”：</p>
-<p><!-- raw HTML omitted --></p>
+
+<p><img src="https://liaoyuhua.github.io/image-20210213231441661.png" alt="image-20210213231441661" style="zoom:50%;" /></p>
+
 <p>点击图示文件夹图标，找到自己安装Git的路径，选中git.exe：</p>
-<p><!-- raw HTML omitted --></p>
-<p><!-- raw HTML omitted --></p>
+
+<p><img src="https://liaoyuhua.github.io/image-20210213231540294.png" alt="image-20210213231540294" style="zoom:50%;" /></p>
+
+<p><img src="https://liaoyuhua.github.io/image-20210213231647609.png" alt="image-20210213231647609" style="zoom:50%;" /></p>
+
 <p>点击OK，就配置好了Git。</p>
+
 <p>另外找到临近“Git”选项的“Github”选项，点击进入：</p>
-<p><!-- raw HTML omitted --></p>
+
+<p><img src="https://liaoyuhua.github.io/image-20210213231826213.png" alt="image-20210213231826213" style="zoom:50%;" /></p>
+
 <p>按照提示添加自己的Github账号，应该会弹出到浏览器进行身份验证。</p>
+
 <h2 id="新建本地项目">新建本地项目</h2>
-<p><!-- raw HTML omitted --></p>
+
+<p><img src="https://liaoyuhua.github.io/image-20210213225257785.png" alt="image-20210213225257785" style="zoom:50%;" /></p>
+
 <p>在Pycharm新建了个‘Loan-Predicting’的项目，里面有一个‘compete-code.py’的python文件。注意：项目里面如果没有进行版本控制（Version Control）的话，文件是橙色的；如果是新建的进行版本控制的文件，就是绿色的；如果是已有的进行版本控制的文件，并且被修改了，未commit之前是蓝色的；如果是已有的进行版本控制的文件，没有被修改，是白色的。如下图所示：</p>
-<p><!-- raw HTML omitted --></p>
+
+<p><img src="https://liaoyuhua.github.io/image-20210213225805303.png" alt="image-20210213225805303" style="zoom:50%;" /></p>
+
 <h2 id="在项目地址生成git仓库">在项目地址生成Git仓库</h2>
+
 <p>点击pycharm导航的“VCS”：</p>
-<p><!-- raw HTML omitted --></p>
+
+<p><img src="https://liaoyuhua.github.io/image-20210213230801212.png" alt="image-20210213230801212" style="zoom:50%;" /></p>
+
 <p>点击“Create Git Repository”，找到你的项目地址：</p>
-<p><!-- raw HTML omitted --></p>
+
+<p><img src="https://liaoyuhua.github.io/image-20210213230919094.png" alt="image-20210213230919094" style="zoom:50%;" /></p>
+
 <p>点击ok。</p>
+
 <h2 id="将本地项目分享到github">将本地项目分享到Github</h2>
+
 <p>点击导航栏的“Git”，点击子选项“Github”，点击“Share Project on Github”：</p>
-<p><!-- raw HTML omitted --></p>
+
+<p><img src="https://liaoyuhua.github.io/image-20210213232002607.png" alt="image-20210213232002607" style="zoom:50%;" /></p>
+
 <p>修改仓库名和选择是否建为私密仓库：</p>
-<p><!-- raw HTML omitted --></p>
+
+<p><img src="https://liaoyuhua.github.io/image-20210213232118499.png" alt="image-20210213232118499" style="zoom:50%;" /></p>
+
 <p>然后会弹出下面这个窗口，根据需要将自己的项目文件上传到Github中，我这里因为只有一个文件，所以只勾选一个：</p>
-<p><!-- raw HTML omitted --></p>
+
+<p><img src="https://liaoyuhua.github.io/image-20210213232340815.png" alt="image-20210213232340815" style="zoom:50%;" /></p>
+
 <p>右下角出现这样的信息，就说明成功了：</p>
-<p><!-- raw HTML omitted --></p>
+
+<p><img src="https://liaoyuhua.github.io/image-20210213232441278.png" alt="image-20210213232441278" style="zoom:50%;" /></p>
+
 <h2 id="将后续修改提交到github仓库中">将后续修改提交到Github仓库中</h2>
+
 <p>点击导航栏的“Git”，点击“Commit”，填写相关内容，然后点击“Push”即可。和正常的Git操作逻辑一致：</p>
-<p><!-- raw HTML omitted --></p>
+
+<p><img src="https://liaoyuhua.github.io/image-20210213232619118.png" alt="image-20210213232619118" style="zoom:50%;" /></p>
+
 <p>push成功：</p>
-<p><!-- raw HTML omitted --></p>
+
+<p><img src="https://liaoyuhua.github.io/image-20210213232827834.png" alt="image-20210213232827834" style="zoom:50%;" /></p>
 
     
     <div class="nav-next-prev">
