@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A master of Statistics at University of Edinburgh">
+    <meta name="keywords" content="hugo blog">
+    <link rel="stylesheet" href=https://liaoyuhua.github.io/css/syntax.css>
+    <link rel="stylesheet" href=https://liaoyuhua.github.io/css/style.css>
+    <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
+    <title>Yuhua&#39;s blog</title>
+  </head><body><aside id="sidenav">
+    <header>
+    
+        <a href=https://liaoyuhua.github.io/><img src="https://liaoyuhua.github.io/avatar.png" alt="avatar"></a>
+        
+    
+
+    <a id="branding" href=https://liaoyuhua.github.io/>
+        
+            Yuhua&#39;s blog
+        
+    </a>
+    </header>
+
+    <nav>
+        
+            		
+            <a href="https://liaoyuhua.github.io/"
+                
+            >
+                <i class='fa fa-home fa-fw'></i>
+                <span>Home</span>
+            </a>
+        
+            		
+            <a href="https://liaoyuhua.github.io/post/"
+                
+            >
+                <i class='fa fa-list fa-fw'></i>
+                <span>Posts</span>
+            </a>
+        
+            		
+            <a href="https://liaoyuhua.github.io/tags/"
+                
+            >
+                <i class='fa fa-tags fa-fw'></i>
+                <span>Tags</span>
+            </a>
+        
+            		
+            <a href="https://github.com/liaoyuhua"
+                
+                    target="_blank"
+                
+            >
+                <i class="fab fa-github fa-ms"></i>
+                <span>github</span>
+            </a>
+        
+            		
+            <a href="mailto:liaoyuhua95@gmail.com"
+                
+            >
+                <i class="far fa-envelope"></i>
+                <span>Email</span>
+            </a>
+        
+    </nav>
+</aside>
+<main id="main">
+            <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
+            <div class="content">
+    
+    <h1 id="title">K-Means</h1>
+    
+      
+    
+    <h2 id="算法原理">算法原理</h2>
+
+<p>聚类问题本质上是将样本集合划分为若干个互斥的子集的过程。</p>
+
+<p><strong>算法</strong></p>
+
+<p>在给定参数<span  class="math">\(k\)</span>和样本集合<span  class="math">\(\{x_1, x_2, x_3,...,x_n\}\)</span>的前提下，</p>
+
+<ol>
+<li>随机从样本集合中不放回抽取<span  class="math">\(k\)</span>个样本作为聚类中心：<span  class="math">\(u_1, u_2, ...,u_k\)</span></li>
+<li>依次对剩下的<span  class="math">\(n-k\)</span>个样本点计算其到<span  class="math">\(u_1, u_2, ...,u_k\)</span>的距离，将其分配给最近距离的聚类中心所属的聚类（cluster）</li>
+<li>计算<span  class="math">\(k\)</span>个聚类各自的重心（centroid/mean），将其作为新的聚类中心：<span  class="math">\(u_1, u_2, ...,u_k\)</span></li>
+<li>重复迭代步骤2至步骤3，直到收敛或者满足停止迭代的标准。</li>
+</ol>
+
+<p><strong>详解</strong></p>
+
+<ol>
+<li>损失函数</li>
+</ol>
+
+<p><span  class="math">\[u^\ast, \delta^\ast = \arg\min_{u,\delta} \frac{1}{N}\sum_{j=1}^{N}\sum_{i=1}^{k}\delta_{i,j}(u_i-x_j)^2\]</span></p>
+
+<p><span  class="math">\(u^\ast\)</span>：各个聚类中心<span  class="math">\(u_1,u_2,...,u_k\)</span></p>
+
+<p><span  class="math">\(\delta^\ast\)</span>：<span  class="math">\(x_j\)</span>是否属于聚类<span  class="math">\(u_i\)</span>，属于的话取1，不属于取0</p>
+
+<ol start="2">
+<li>初始化聚类中心的方法</li>
+</ol>
+
+<p>随机选择<span  class="math">\(k\)</span>个样本；</p>
+
+<p>选择尽可能分散的<span  class="math">\(k\)</span>个样本（k-means++算法）</p>
+
+<blockquote>
+<p>k-means++算法初始化聚类中心的方法：</p>
+
+<ol>
+<li>随机选择一个样本为第一个聚类中心：<span  class="math">\(u_1\)</span></li>
+<li>对于所有样本，计算到离其最近的聚类中心之间的距离：<span  class="math">\(d(x)\)</span></li>
+<li>以正比例于距离的平方的概率（<span  class="math">\(\lambda d(x)^2\)</span>）选择下一个聚类中心：<span  class="math">\(u_i\)</span></li>
+<li>迭代步骤2和步骤3，直到<span  class="math">\(i=k\)</span></li>
+</ol>
+</blockquote>
+
+<ol start="3">
+<li>参数<span  class="math">\(k\)</span>的确定方法（Elbow Method）</li>
+</ol>
+
+<p>取不同的<span  class="math">\(k\)</span>值，分别计算<span  class="math">\(J=\frac{1}{N}\sum_{j=1}^{N}\sum_{i=1}^{k}\delta_{i,j}(u_i-x_j)^2\)</span>，然后作以下图：</p>
+
+<p><img src="https://www.oreilly.com/library/view/statistics-for-machine/9781788295758/assets/995b8b58-06f1-4884-a2a1-f3648428e947.png" alt="Image result for elbow method" style="zoom:50%;" /></p>
+
+<p>为什么Elbow Method可以有效地选择optimal number of k：首先，我们需要避免聚类个数过多，因为增大聚类个数，会导致<span  class="math">\(J\)</span>减小，最极端的情况下，如果每个样本独属于一个聚类，那么<span  class="math">\(J=0\)</span>。因此，我们想要在减小<span  class="math">\(J\)</span>的同时，保持<span  class="math">\(k\)</span>也尽可能少。</p>
+
+<ol start="4">
+<li>迭代终止的条件</li>
+</ol>
+
+<p>4.1 迭代次数达到预先设定的值</p>
+
+<p>4.2 第<span  class="math">\(i\)</span>次迭代的聚类结果和第<span  class="math">\(i-1\)</span>次相同</p>
+
+<p>4.3 第<span  class="math">\(i\)</span>迭代的<span  class="math">\(J_i\)</span>，第<span  class="math">\(i-1\)</span>次迭代的<span  class="math">\(J_{i-1}\)</span>，其差值（<span  class="math">\(J_{i-1}-J_{i}\)</span>）小于阈值</p>
+
+<h2 id="收敛性证明">收敛性证明</h2>
+
+<p><strong>首先将k-means算法进行数学化表达</strong></p>
+
+<p><strong>然后推导出k-means算法的一个重要性质</strong></p>
+
+<p><strong>最后证明k-means算法的收敛性</strong></p>
+
+<h2 id="算法实现">算法实现</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># import required modules</span>
+<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+<span style="color:#f92672">from</span> sklearn <span style="color:#f92672">import</span> datasets
+<span style="color:#f92672">import</span> pandas <span style="color:#f92672">as</span> pd
+<span style="color:#f92672">import</span> math
+
+<span style="color:#75715e"># sample data set</span>
+<span style="color:#75715e"># In fact, this data set is dict-type, so we need to transform it.</span>
+<span style="color:#75715e"># To make it convenient to display the result of clustering, we choose only two features and combine them.</span>
+iris <span style="color:#f92672">=</span> datasets<span style="color:#f92672">.</span>load_iris()
+iris<span style="color:#f92672">.</span>keys()
+data <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(iris[<span style="color:#e6db74">&#39;data&#39;</span>][:, [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>]], columns<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;sepal length&#39;</span>, <span style="color:#e6db74">&#39;sepal width&#39;</span>])
+
+
+<span style="color:#75715e"># implement k-means clustering algorithm</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">EuclidDistance</span>(x, y):
+    <span style="color:#66d9ef">return</span> math<span style="color:#f92672">.</span>sqrt(sum(pow((x <span style="color:#f92672">-</span> y), <span style="color:#ae81ff">2</span>)))
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">AllocateCluster</span>(data, centroid, k):
+    cluster <span style="color:#f92672">=</span> []
+    sse <span style="color:#f92672">=</span> []
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(data)):
+        temp_dist <span style="color:#f92672">=</span> []
+        <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(k):
+            temp_dist<span style="color:#f92672">.</span>append(EuclidDistance(data<span style="color:#f92672">.</span>loc[i, :], centroid<span style="color:#f92672">.</span>loc[j, :]))
+        cluster<span style="color:#f92672">.</span>append(np<span style="color:#f92672">.</span>nanargmin(temp_dist))
+        sse<span style="color:#f92672">.</span>append(sum(pow(min(temp_dist) <span style="color:#f92672">-</span> centroid<span style="color:#f92672">.</span>iloc[np<span style="color:#f92672">.</span>nanargmin(temp_dist), :], <span style="color:#ae81ff">2</span>)))
+    <span style="color:#66d9ef">return</span> cluster, sse
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">FindCentroid</span>(data, cluster_list, k):
+    dim <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>]
+    centroid_mat <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((k, dim))
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(k):
+        ind <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>where(cluster_list <span style="color:#f92672">==</span> i)
+        centroid_mat[i, :] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>mean(data<span style="color:#f92672">.</span>iloc(ind))
+    <span style="color:#66d9ef">return</span> pd<span style="color:#f92672">.</span>DataFrame(centroid_mat)
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">Kmeans</span>(data, k, max_iteration, min_sse_lifting):
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    :param data: data set to implement clustering algorithm
+</span><span style="color:#e6db74">    :param k: number of clusters
+</span><span style="color:#e6db74">    :param max_iteration: maximum number of iteration
+</span><span style="color:#e6db74">    :param min_sse_lifting: threshold of lift of SSE between current iteration and last iteration
+</span><span style="color:#e6db74">    :return:
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    init_centroid <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>sample(n<span style="color:#f92672">=</span>k)
+    cluster, last_sse <span style="color:#f92672">=</span> AllocateCluster(data, init_centroid)[<span style="color:#ae81ff">0</span>], AllocateCluster(data, init_centroid)[<span style="color:#ae81ff">1</span>]
+    iteration <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    sse_lifting <span style="color:#f92672">=</span> min_sse_lifting <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">while</span> iteration <span style="color:#f92672">&lt;=</span> max_iteration <span style="color:#f92672">and</span> sse_lifting <span style="color:#f92672">&gt;</span> min_sse_lifting:
+        centroid <span style="color:#f92672">=</span> FindCentroid(data, cluster, k)
+        cluster, current_sse <span style="color:#f92672">=</span> AllocateCluster(data, centroid, k)[<span style="color:#ae81ff">0</span>], AllocateCluster(data, centroid, k)[<span style="color:#ae81ff">1</span>]
+        sse_lifting <span style="color:#f92672">=</span> current_sse <span style="color:#f92672">-</span> last_sse
+        last_sse <span style="color:#f92672">=</span> current_sse
+        iteration <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">return</span> cluster</code></pre></div>
+<h2 id="reference">Reference</h2>
+
+<p>Convergence of K-means: <a href="https://zhuanlan.zhihu.com/p/149597282">https://zhuanlan.zhihu.com/p/149597282</a></p>
+
+    
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a href="https://liaoyuhua.github.io/post/%E9%80%9A%E8%BF%87pycharm%E5%92%8Cgithub%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">top</i></a>
+        <div class="nav-next">
+            
+                <a class="grayed-out" href="javascript:void()"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
+    </div>
+    
+
+            </div><footer>
+<div class="footer-content">
+
+
+<p class="copyright meta">Copyright © 2020–2020, LIAO Yuhua; all rights reserved.</p>
+
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script></main>
+    </body>
+    <script src=https://liaoyuhua.github.io/js/navbutton.js></script>
+</html>

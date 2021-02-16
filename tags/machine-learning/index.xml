@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright © 2020–2020, LIAO Yuhua; all rights reserved.</copyright>
-    <lastBuildDate>Mon, 01 Feb 2021 23:32:10 +0800</lastBuildDate><atom:link href="https://liaoyuhua.github.io/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Feb 2021 12:26:42 +0800</lastBuildDate><atom:link href="https://liaoyuhua.github.io/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>K-Means</title>
+      <link>https://liaoyuhua.github.io/post/k-means/</link>
+      <pubDate>Mon, 15 Feb 2021 12:26:42 +0800</pubDate>
+      
+      <guid>https://liaoyuhua.github.io/post/k-means/</guid>
+      <description>算法原理 聚类问题本质上是将样本集合划分为若干个互斥的子集的过程。 算法 在给定参数\(k\)和样本集合\(\{x_1, x_2, x_3,...,x_n\</description>
+    </item>
+    
     <item>
       <title>SMOTE: Synthetic Minority Over-sampling Technique</title>
       <link>https://liaoyuhua.github.io/post/smote/</link>

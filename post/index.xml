@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright © 2020–2020, LIAO Yuhua; all rights reserved.</copyright>
-    <lastBuildDate>Sat, 13 Feb 2021 22:49:43 +0800</lastBuildDate><atom:link href="https://liaoyuhua.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Feb 2021 12:26:42 +0800</lastBuildDate><atom:link href="https://liaoyuhua.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>K-Means</title>
+      <link>https://liaoyuhua.github.io/post/k-means/</link>
+      <pubDate>Mon, 15 Feb 2021 12:26:42 +0800</pubDate>
+      
+      <guid>https://liaoyuhua.github.io/post/k-means/</guid>
+      <description>算法原理 聚类问题本质上是将样本集合划分为若干个互斥的子集的过程。 算法 在给定参数\(k\)和样本集合\(\{x_1, x_2, x_3,...,x_n\</description>
+    </item>
+    
     <item>
       <title>通过Pycharm和Github进行项目版本管理</title>
       <link>https://liaoyuhua.github.io/post/%E9%80%9A%E8%BF%87pycharm%E5%92%8Cgithub%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</link>
@@ -33,15 +42,6 @@
       
       <guid>https://liaoyuhua.github.io/post/smote/</guid>
       <description>这个方法用来干嘛 在处理很多分类问题的时候，我们会面临着类别不均衡的问题，比如信贷违约概率预测问题，在这个问题里，违约的用户往往都占极小部分；</description>
-    </item>
-    
-    <item>
-      <title>面试：概率题</title>
-      <link>https://liaoyuhua.github.io/post/%E9%9D%A2%E8%AF%95%E6%A6%82%E7%8E%87%E9%A2%98/</link>
-      <pubDate>Tue, 29 Sep 2020 20:26:10 +0800</pubDate>
-      
-      <guid>https://liaoyuhua.github.io/post/%E9%9D%A2%E8%AF%95%E6%A6%82%E7%8E%87%E9%A2%98/</guid>
-      <description>从一副52张扑克牌中随机抽两种，颜色相等的概率 分母：\(52\times51 \)；分子：\(26\times 25\)；概率：\(\frac{</description>
     </item>
     
     <item>
