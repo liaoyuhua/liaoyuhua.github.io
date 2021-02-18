@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>theorem on Yuhua&#39;s blog</title>
+    <link>https://liaoyuhua.github.io/tags/theorem/</link>
+    <description>Recent content in theorem on Yuhua&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright © 2020–2020, LIAO Yuhua; all rights reserved.</copyright>
+    <lastBuildDate>Tue, 02 Feb 2021 12:58:10 +0800</lastBuildDate><atom:link href="https://liaoyuhua.github.io/tags/theorem/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cover定理</title>
+      <link>https://liaoyuhua.github.io/post/cover%E5%AE%9A%E7%90%86/</link>
+      <pubDate>Tue, 02 Feb 2021 12:58:10 +0800</pubDate>
+      
+      <guid>https://liaoyuhua.github.io/post/cover%E5%AE%9A%E7%90%86/</guid>
+      <description>引子 之前在学SVM和kernel method的时候，老是被洗脑：低维的线性不可分问题放到高维可能线性可分。并且“异或问题”的确很形象地展示了</description>
+    </item>
+    
+  </channel>
+</rss>

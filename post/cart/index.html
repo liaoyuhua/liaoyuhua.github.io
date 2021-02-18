@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A master of Statistics at University of Edinburgh">
+    <meta name="keywords" content="hugo blog">
+    <link rel="stylesheet" href=https://liaoyuhua.github.io/css/syntax.css>
+    <link rel="stylesheet" href=https://liaoyuhua.github.io/css/style.css>
+    <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
+    <title>Yuhua&#39;s blog</title>
+  </head><body><aside id="sidenav">
+    <header>
+    
+        <a href=https://liaoyuhua.github.io/><img src="https://liaoyuhua.github.io/avatar.png" alt="avatar"></a>
+        
+    
+
+    <a id="branding" href=https://liaoyuhua.github.io/>
+        
+            Yuhua&#39;s blog
+        
+    </a>
+    </header>
+
+    <nav>
+        
+            		
+            <a href="https://liaoyuhua.github.io/"
+                
+            >
+                <i class='fa fa-home fa-fw'></i>
+                <span>Home</span>
+            </a>
+        
+            		
+            <a href="https://liaoyuhua.github.io/post/"
+                
+            >
+                <i class='fa fa-list fa-fw'></i>
+                <span>Posts</span>
+            </a>
+        
+            		
+            <a href="https://liaoyuhua.github.io/tags/"
+                
+            >
+                <i class='fa fa-tags fa-fw'></i>
+                <span>Tags</span>
+            </a>
+        
+            		
+            <a href="https://github.com/liaoyuhua"
+                
+                    target="_blank"
+                
+            >
+                <i class="fab fa-github fa-ms"></i>
+                <span>github</span>
+            </a>
+        
+            		
+            <a href="mailto:liaoyuhua95@gmail.com"
+                
+            >
+                <i class="far fa-envelope"></i>
+                <span>Email</span>
+            </a>
+        
+    </nav>
+</aside>
+<main id="main">
+            <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
+            <div class="content">
+    
+    <h1 id="title">CART</h1>
+    
+      
+    
+    <p>[TOC]</p>
+
+<h3 id="简介">简介</h3>
+
+<p>CART全名classification and regression tree，中文名分类与回归树。和ID3、C4.5除了节点分裂特征的计算依据不同以外（ID3是信息增益，C4.5是信息增益比），CART是二叉树，也就是说父节点只有两个子节点。</p>
+
+<p>整个CART算法可以分为两个部分：</p>
+
+<ol>
+<li>CART树生成</li>
+</ol>
+
+<p>a. 分类树</p>
+
+<p>b. 回归树</p>
+
+<ol start="2">
+<li>CART树剪枝</li>
+</ol>
+
+<h3 id="cart树生成">CART树生成</h3>
+
+<h4 id="分类树">分类树</h4>
+
+<p>分类树用基尼指数最小化选择最优特征。</p>
+
+<blockquote>
+<p>基尼指数：</p>
+
+<p><span  class="math">\[Gini(p)=\sum_{k=1}^{K}p_k(1-p_k)=1-\sum_{k=1}^{K}p_k^2\]</span></p>
+
+<p>基尼指数的简单解释：</p>
+
+<p>存在一个集合$D$，其中的元素有$K$个分类，用$p_k$来表示集合中元素属于第$k$类的概率（从古典概型的角度来说，就是$\frac{k类的元素数目}{集中D中元素数目}$），用基尼指数来表示集合的不确定性。当集合中所有元素属于同一类别时，基尼指数取得最小值（0），当集合中所有元素分别属于单独类别，也就是说$K=N$时，基尼指数取得最大值（$\frac{N-1}{N}$）。</p>
+
+<p>根据某节点$a$分叉的基尼指数：</p>
+
+<p>$Gini(D,a)=\frac{|D_1|}{|D|}Gini(D_1)+\frac{|D_2|}{|D|}Gini(D_2)$</p>
+</blockquote>
+
+<p><strong>算法</strong></p>
+
+<ol>
+<li>在某一节点有训练集$D$，遍历变量，选择第$j$个变量$x^{(j)}$和它的的取值$s$，作为切分变量和切分点，并定义两个子集：</li>
+</ol>
+
+<p>$D_1={x|x^{(j)}=s}$;</p>
+
+<p>$D_2={x|x^{(j)}\neq s}$</p>
+
+<p>然后计算$D_1$和$D_2$的基尼指数和。最终确定满足最小基尼指数的参数对$j,s$</p>
+
+<ol start="2">
+<li>继续对步骤1中的两个子集调用步骤1，直到满足停止条件。</li>
+</ol>
+
+<h4 id="回归树">回归树</h4>
+
+<p>回归树根据平方误差最小化来选择最优特征。</p>
+
+<blockquote>
+<p>平方误差：</p>
+
+<p>$\sum\limits_{x_i\in  R_m}(y_i-f(x_i))^2$</p>
+</blockquote>
+
+<p>对输入空间进行划分，回归树选择第$j$个变量$x^{(j)}$和它的的取值$s$，作为切分变量和切分点，并定义两个区域：</p>
+
+<p>$R_1(j,s)={x|x^{(j)}\leq s}$和$R_1(j,s)={x|x^{(j)}&gt;s}$</p>
+
+<p>然后在这两个区域内计算各自的平方误差：</p>
+
+<p>$\sum\limits_{x_i\in  R_1}(y_i-f_1(x<em>i))^2+\sum\limits</em>{x_i\in  R_2}(y_i-f_2(x_i))^2$</p>
+
+<p>其中$f_1(x_i)=mean(y_i|x_i\in R_1)$, $f_2(x_i)=mean(y_i|x_i\in R_2)$</p>
+
+<p><strong>算法</strong></p>
+
+<ol>
+<li>遍历变量$j$，对固定的切分变量$j$扫描切分点$s$，求解目标函数：</li>
+</ol>
+
+<p>$\underset{j,s}{argmin} \sum\limits_{x_i\in  R_1}(y_i-f_1(x<em>i))^2+\sum\limits</em>{x_i\in  R_2}(y_i-f_2(x_i))^2$</p>
+
+<p>其中</p>
+
+<p>$R_1(j,s)={x|x^{(j)}\leq s}$,</p>
+
+<p>$R_1(j,s)={x|x^{(j)}&gt;s}$,</p>
+
+<p>$f_1(x_i)=mean(y_i|x_i\in R_1)$,</p>
+
+<p>$f_2(x_i)=mean(y_i|x_i\in R_2)$</p>
+
+<ol start="2">
+<li><p>根据步骤1中的最优$j,s$确定$R_1$、$R_2$</p></li>
+
+<li><p>继续对步骤2中的两个子区域调用步骤1、2，直到满足停止条件。</p></li>
+</ol>
+
+<blockquote>
+<p>常用的停止条件：</p>
+
+<p>节点中的样本数少于阈值；节点的基尼指数/平方误差小于阈值；CART树的深度大于阈值。</p>
+</blockquote>
+
+<h3 id="cart树剪枝">CART树剪枝</h3>
+
+<p>CART树是先生成整棵树，然后对其剪枝，属于后剪枝。</p>
+
+<p><strong>思路</strong></p>
+
+<p>首先定义子树：设T是有根树，a是T中的一个顶点，由a以及a的所有后代导出称为有向树T的子树。</p>
+
+<p>然后定义树的损失函数：$C_\alpha(T)=C(T)+\alpha|T|$，这里的$C(T)$指的是子树对训练数据的预测误差，$|T|$是子树的叶节点个数，$\alpha$是调节参数，类似于lasso regression里面的penalty。</p>
+
+<p>对于树T任意内部节点a，以及节点a后代们组成的子树$T_a$，我们可以观察两个量：1. 整个子树$T<em>a$的损失函数$C</em>{\alpha_{a}}(T_a)=C(T_a)+\alpha|T_a|$（式1）; 2. 减掉子树$T_a$之后，也就是说子树$T<em>a$的全部样本点聚合到节点a，也就是说节点a成为了树T的一个叶节点，那么节点a的损失函数$C</em>{\alpha_a}(a)=C(a)+\alpha_a$（式2）。</p>
+
+<p>紧接着，考虑两个极端情况，1. 当$\alpha=0$或$\alpha$极小的时候，（式1）=$C(T_a)$，（式2）=$C(a)$，由于子树$T<em>a$的预测能力比单个节点$a$强，因此$C</em>{\alpha_{a}}(T<em>a)&lt;C</em>{\alpha<em>a}(a)$；2. 当$\alpha=+\infin$或足够大时，$C</em>{\alpha_{a}}(T<em>a)&gt;C</em>{\alpha_a}(a)$。因此，当$\alpha<em>a$取到$(0,+\infin)$某个值时，$C</em>{\alpha_{a}}(T<em>a)=C</em>{\alpha_a}(a)$，这个等式也就是说减去$T_a$这棵子树，对于预测效果影响很小。根据前面的推导，我们可以得到$\alpha_a=\frac{C(t)-C(T_a)}{|T_a|-1}$。</p>
+
+<p>此时，我们对树T中的每一个内部节点t计算$\alpha_t$，找到最小的$\alpha_t$，减掉其对应的子树，并且重复这个过程，我们就能找到一列最优子序列$(T_0,T_1,T_2,...,T_n)$。</p>
+
+<p><strong>算法</strong></p>
+
+<ol>
+<li>设$k=0$，$T=T_0$</li>
+<li>设$\alpha=+\infin$</li>
+<li>自下而上地对各内部节点t计算$C(T_t)$，$|T_t|$以及$g(t)=\frac{C(t)-C(T_t)}{|T_t|-1}$，$\alpha=min(\alpha,g(t))$</li>
+<li>对$g(t)=\alpha$的内部节点$t$进行剪枝，并对叶节点t以多数表决法决定其类别，得到树T</li>
+<li>设$k=k+1$，$\alpha_k=\alpha$，$T_k=T$。</li>
+<li>如果$T_k$不是由根节点及两个叶节点构成的树，则回到步骤（2）；否则令$T_k=T$。</li>
+<li>采用交叉验证法在最有子树序列$T_0,T_1,T_2,...,T<em>n$中选取最优子树$T</em>{\alpha}$。</li>
+</ol>
+
+<p><strong>备注</strong></p>
+
+<p>Breiman等人证明：当$\alpha$从小增大时，剪枝得到的最优子树是嵌套的，也就是说我们从总是每一轮减掉最小的$\alpha$对应的子树，得到的最优子树，总是能包括下一轮我们所要求的更小的最优子树。</p>
+
+<h3 id="reference">Reference</h3>
+
+<p>《统计学习方法第二版》李航</p>
+
+    
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a href="https://liaoyuhua.github.io/post/r%E8%AF%AD%E8%A8%80%E7%BB%9F%E8%AE%A1%E7%BB%93%E6%9E%9C%E8%BE%93%E5%87%BA%E8%87%B3%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">top</i></a>
+        <div class="nav-next">
+            
+                <a href="https://liaoyuhua.github.io/post/%E9%80%9A%E8%BF%87pycharm%E5%92%8Cgithub%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
+    </div>
+    
+
+            </div><footer>
+<div class="footer-content">
+
+
+<p class="copyright meta">Copyright © 2020–2020, LIAO Yuhua; all rights reserved.</p>
+
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script></main>
+    </body>
+    <script src=https://liaoyuhua.github.io/js/navbutton.js></script>
+</html>
