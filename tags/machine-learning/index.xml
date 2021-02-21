@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright © 2020–2020, LIAO Yuhua; all rights reserved.</copyright>
-    <lastBuildDate>Mon, 15 Feb 2021 12:26:42 +0800</lastBuildDate><atom:link href="https://liaoyuhua.github.io/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 21 Feb 2021 00:05:30 +0800</lastBuildDate><atom:link href="https://liaoyuhua.github.io/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>逻辑回归</title>
+      <link>https://liaoyuhua.github.io/post/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/</link>
+      <pubDate>Sun, 21 Feb 2021 00:05:30 +0800</pubDate>
+      
+      <guid>https://liaoyuhua.github.io/post/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/</guid>
+      <description>从分类问题说起 既然线性回归可以用来拟合连续型的标签，那么可不可以用来拟合离散型的标签呢？ 为了方便，我们考虑一维的情况，也就是说横坐标是输入特</description>
+    </item>
+    
     <item>
       <title>K-Means</title>
       <link>https://liaoyuhua.github.io/post/k-means/</link>
