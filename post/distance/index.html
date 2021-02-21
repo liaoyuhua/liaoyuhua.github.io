@@ -107,6 +107,32 @@
 
 <h2 id="余弦相似度cosine-similarity">余弦相似度（Cosine similarity）</h2>
 
+<p>余弦<span  class="math">\(cos(\theta)\)</span>可以用来衡量两个向量的相似性。</p>
+
+<p><img src="\cos.jpg" alt="cos" style="zoom:50%;" /></p>
+
+<p>首先，向量a在向量b上的投影占向量b的比例，可以用来衡量向量a与向量b在方向上的差异性：<span  class="math">\(\frac{projecttion-of-\hat{a}}{\hat{|a|}}\)</span>。比如，当向量a与向量b垂直时，这个比例为0；当a与b同向时，这个比例为1。</p>
+
+<p>然后，分别将<span  class="math">\(\frac{projecttion-of-\hat{a}}{\hat{|a|}}\)</span>中的分子分母表示出来即可。</p>
+
+<blockquote>
+<p>证明<span  class="math">\(向量a与向量b点乘=|\hat{a}|*|\hat{b}|*sin(\theta)\)</span>：</p>
+
+<p><img src="\cos2.jpg" alt="cos2" style="zoom:33%;" /></p>
+
+<p>假设a、b均为二维向量，<span  class="math">\(\hat{a}=(a_x,a_y),\hat{b}=(b_x,b_y)\)</span>，向量a与向量b之间的夹角为<span  class="math">\(\theta\)</span>，向量a与x轴夹角为<span  class="math">\(\beta\)</span>，向量b与x轴的夹角为<span  class="math">\(\omega\)</span>；</p>
+
+<p><span  class="math">\(a与b点乘=a_x*b_x+a_y*b_y\)</span>；</p>
+
+<p><span  class="math">\(a_x=cos\beta|\hat{a}|,b_x=cos\omega|\hat{b}|,a_y=cos(90^{o}-\beta)|\hat{a}|,b_y=cos(90^{o}-\omega)|\hat{b}|\)</span>；</p>
+
+<p>其中，<span  class="math">\(a_y=cos(90^{o}-\beta)|\hat{a}|=sin(\beta)|\hat{a}|,b_y=cos(90^{o}-\omega)|\hat{b}|=sin(\omega)|\hat{b}|\)</span>；</p>
+
+<p>因此，a与b点乘可以表示为<span  class="math">\(cos\beta|\hat{a}|*cos\omega|\hat{b}|+sin\beta|\hat{a}|*sin\omega|\hat{b}|=|\hat{a}|*|\hat{b}|*sin(\beta-\omega)=|\hat{a}|*|\hat{b}|*cos(\theta)\)</span>。</p>
+</blockquote>
+
+<p>根据上面的推导，<span  class="math">\(cos(\theta)=\frac{\hat{a}*\hat{b}}{|\hat{a}|*|\hat{b}|}\)</span>。所以分子中的向量a在向量b上的投影可以表示为<span  class="math">\(cos(\theta)*|\hat{a}|=\frac{\hat{a}*\hat{b}}{|\hat{b}|}\)</span>。所以最终的<span  class="math">\(\frac{projecttion-of-\hat{a}}{\hat{|a|}}=cos(\theta)=\frac{\hat{a}*\hat{b}}{|\hat{a}|*|\hat{b}|}\)</span>。</p>
+
 <h2 id="jaccard-distance">（Jaccard distance）</h2>
 
     
